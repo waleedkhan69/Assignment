@@ -1,0 +1,47 @@
+class Building:
+    def __init__(self, name, floors):
+        self.name = name
+        self.floors = floors
+
+    def __str__(self):
+        return f"{self.name} ({self.floors} floors)"
+
+class Campus:
+    def __init__(self, name):
+        self.name = name
+        self.buildings = []
+
+    def add_building(self, building):
+        self.buildings.append(building)
+
+    def __str__(self):
+        building_list = "\n".join(str(building) for building in self.buildings)
+        return f"{self.name} Campus:\n{building_list}"
+
+class University:
+    def __init__(self, name):
+        self.name = name
+        self.campuses = []
+
+    def add_campus(self, campus):
+        self.campuses.append(campus)
+
+    def __str__(self):
+        campus_list = "\n\n".join(str(campus) for campus in self.campuses)
+        return f"Welcome to {self.name} University!\n{campus_list}"
+
+# Example usage:
+university = University("Example University")
+
+campus1 = Campus("Main")
+campus1.add_building(Building("Science Building", 4))
+campus1.add_building(Building("Library", 3))
+
+campus2 = Campus("North")
+campus2.add_building(Building("Engineering Building", 5))
+campus2.add_building(Building("Sports Complex", 2))
+
+university.add_campus(campus1)
+university.add_campus(campus2)
+
+print(university)
